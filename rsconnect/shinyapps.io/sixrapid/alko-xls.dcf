@@ -5,6 +5,9 @@ account: sixrapid
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 397873
-bundleId: 1527191
+bundleId: 4023584
 url: https://sixrapid.shinyapps.io/alko-xls/
-when: 1533847831.05631
+when: 1608752802.47863
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: hinnasto.xlsx

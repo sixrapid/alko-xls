@@ -16,9 +16,9 @@ createLink <- function(id, orig) {
   sprintf('<a href="https://www.alko.fi/tuotteet/%s/" title="Alkon tuotesivu" target="_blank">%s</a>', id, orig)
 }
 
-download.file(url="https://www.alko.fi/INTERSHOP/static/WFS/Alko-OnlineShop-Site/-/Alko-OnlineShop/fi_FI/Alkon%20Hinnasto%20Tekstitiedostona/alkon-hinnasto-tekstitiedostona.xls", destfile="hinnasto.xls")
-alko <- read_xls("hinnasto.xls", skip=2, guess_max = 5000)
-title_str <- read_xls("hinnasto.xls", col_names = F, n_max = 1) %>% toString()
+download.file(url="https://www.alko.fi/INTERSHOP/static/WFS/Alko-OnlineShop-Site/-/Alko-OnlineShop/fi_FI/Alkon%20Hinnasto%20Tekstitiedostona/alkon-hinnasto-tekstitiedostona.xlsx", destfile="hinnasto.xlsx")
+alko <- read_excel("hinnasto.xlsx", skip=2, guess_max = 10000)
+title_str <- read_excel("hinnasto.xlsx", col_names = F, n_max = 1) %>% toString()
 # date <- title_str %>% substring(16) %>% as.Date("%d.%m.%Y")
 
 numeeriset = c("Numero"
@@ -41,7 +41,7 @@ faktorit = c("Uutuus"
              , "Valmistusmaa"
              , "Alue"
              , "Pakkaustyyppi"
-             , "Suljentatyppi"
+             , "Suljentatyyppi"
              , "Valikoima")
 
 alko <- alko %>%
@@ -123,10 +123,16 @@ ui <- tagList(
           , div(
             "Hintatiedot perustuvat Alkon jakamaan XLS-taulukkoon, joka on saatavilla osoitteesta"
             , a("https://www.alko.fi/valikoimat-ja-hinnasto/hinnasto", href="https://www.alko.fi/valikoimat-ja-hinnasto/hinnasto")
+            , "."
           )
           , br()
           , div(
-            "Palautteet ja ehdotukset: kasperi.kuuskoski (at) gmail.com"
+            "Palautteet ja ehdotukset voi toimittaa githubissa @sixrapid."
+          )
+          , div(
+            "Lähdekoodi:"
+            , a("https://github.com/sixrapid/alkoholisti", href="https://github.com/sixrapid/alkoholisti")
+            , "."
           )
           , br()
           , div(
